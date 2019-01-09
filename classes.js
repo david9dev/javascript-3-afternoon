@@ -65,6 +65,23 @@ class Employee
 
 //Code Here
 
+class Manager extends Employee
+{
+  constructor(first, last, email, age)
+  {
+    super(first, last, email, age)
+    this.reports = [];
+  }
+  hire(employee)
+  {
+    this.reports.push(employee);
+  }
+  fire(index)
+  {
+    this.reports.splice(index, 1);
+  }
+}
+
 
 
 ////////// PROBLEM 3 //////////
@@ -90,6 +107,51 @@ class Employee
 */
 
 //Code Here
+class ProgressiveManager extends Manager
+{
+  constructor(first, last, email, age)
+  {
+    super(first, last, email, age)
+    this.title = "Not a manager";
+    this.bonus = 0;
+  }
+  updateTitle()
+  {
+    //console.log(this.reports.length);
+    const  TITLE_TIER0 = "Not a manager";
+    const  TITLE_TIER1 = "Barely Manager";
+    const  TITLE_TIER2 = "Mostly Manager";
+    const  TITLE_TIER3 = "Manager";
+    const  TITLE_TIER4 = "Manager Plus";
+    const  TITLE_TIER5 = "Bestest Manager";
+
+    const TIER1_THRESHOLD = 1;
+    const TIER2_THRESHOLD = 4;
+    const TIER3_THRESHOLD = 11;
+    const TIER4_THRESHOLD = 51;
+    const TIER5_THRESHOLD = 101;
+    
+    if(this.reports.length >= TIER5_THRESHOLD) {this.title = TITLE_TIER5 }
+    else if (this.reports.length >= TIER4_THRESHOLD) {this.title = TITLE_TIER4 }
+    else if (this.reports.length >= TIER3_THRESHOLD) {this.title = TITLE_TIER3 }
+    else if (this.reports.length >= TIER2_THRESHOLD) {this.title = TITLE_TIER2 }
+    else if (this.reports.length >= TIER1_THRESHOLD) {this.title = TITLE_TIER1 }
+    else {this.title = TITLE_TIER0}
+  }
+  hire(employee)
+  {
+    super.hire(employee);
+    this.updateTitle();
+  }
+  fire(index)
+  {
+    super.fire(index);
+    this.updateTitle();
+    this.bonus += 100;
+  }
+
+}
+
 
 
 
@@ -117,5 +179,34 @@ class Employee
 */
 
 //Code Here
+class Machine
+{
+  constructor()
+  {
+    this.widgets_made_count = 0;
+    this.wear_and_tear_count = 0;
+    this.needs_reboot = false;
+  }
+
+  makeWidgets(num)
+  {
+    this.widgets_made_count += num;
+    this.wear_and_tear_count = Math.floor(this.widgets_made_count / 50);
+  }
+  fixMachine()
+  {
+    this.needs_reboot = true;
+  }
+  reboot()
+  {
+    return () =>
+    {
+      this.wear_and_tear_count -= 10;
+      this.needs_reboot = false;
+    }
+  }
+}
+var comptie = new Machine();
+
 
 

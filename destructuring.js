@@ -22,6 +22,7 @@ var carDetails = {
 */
 
 //Code Here
+var {color, make, model, year} = carDetails;
 
 
 
@@ -35,6 +36,7 @@ var carDetails = {
 
 function greeting( obj ) {
   //Code Here
+  var {firstName, lastName, title} = obj;
   
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
@@ -54,6 +56,18 @@ function greeting( obj ) {
 */
 
 //Code Here
+function totalPopulation(obj)
+{
+  var {utah, califonia, texas, arizona} = obj;
+  var sum = 0;
+  for(let key in obj)
+  {
+    sum += obj[key];
+  }
+  
+
+  return sum;
+}
 
 
 
@@ -68,6 +82,17 @@ function greeting( obj ) {
 */
 
 //Code Here
+
+function ingredients(obj)
+{
+  var {carb, fat, protein} = obj;
+  var array = [];
+  for(let key in obj)
+  {
+    array.push(obj[key]);
+  }
+  return array;
+}
 
 
 
@@ -86,6 +111,20 @@ function greeting( obj ) {
 */
 
 //Code Here
+function largeNumbers({first, second, third})
+{
+  var small = first;
+  var array = [];
+  array.push(first,second,third);
+  for(let i = 0; i < 3; i++)
+  {
+    if(array[i] < small)
+    {
+      small = array[i];
+    }
+  }
+  return small;
+}
 
 
 
@@ -98,5 +137,21 @@ function greeting( obj ) {
 */
 
 //Code Here
+function numberGroups({a, b, c})
+{
+  var large = a;
+  var array = [];
+  array.push(a, b, c);
+  for(let i = 0; i < 3; i++)
+  {
+    //console.log(`at index ${i}`, array[i].length);
+    if(array[i].length > large.length)
+    {
+      large = array[i];
+    }
+  }
+  //console.log(large);
+  return large
+}
 
 

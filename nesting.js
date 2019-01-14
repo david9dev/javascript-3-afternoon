@@ -197,5 +197,24 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
 */
 
 //Code Here
+function looper()
+{
+  numsArr.forEach((numsArrVal) => 
+  {
+    numsArrVal.forEach((curVal, index, array) => 
+    {
+      if(curVal % 2 === 0)
+      {
+        array[index] = "even";
+      }
+      else
+      {
+        array[index] = "odd";
+      }
+    });
+  });
+  console.log(numsArr);
+  return numsArr;
+}
 
 

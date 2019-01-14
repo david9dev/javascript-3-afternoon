@@ -171,6 +171,13 @@ var myCar = {
 */
 
 //Code Here
+function recordCleaner()
+{
+
+  myCar.accidents.forEach((curVal) => {
+    curVal.atFaultForAccident = false;
+  });
+}
 
 
 
